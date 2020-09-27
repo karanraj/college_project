@@ -1,0 +1,10 @@
+{
+    "git.ignoreLimitWarning": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 100,
+    "editor.fontSize": 19,
+    "dart.previewFlutterUiGuides": true,
+    "editor.lineHeight": 25,
+    "editor.formatOnSave": true,
+    "dart.previewFlutterUiGuidesCustomTracking": true
+}
