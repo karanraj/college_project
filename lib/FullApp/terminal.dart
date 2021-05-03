@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:http/http.dart' as http;
 
+import '../main.dart';
+
 class Terminal extends StatefulWidget {
   @override
   _TerminalState createState() => _TerminalState();
@@ -16,7 +18,7 @@ class _TerminalState extends State<Terminal> {
   var msgc = TextEditingController();
 
   api(c) async {
-    var url = 'http://172.20.10.8/cgi-bin/web.py?x=${c}';
+    var url = 'http://${ip}/cgi-bin/main.py?x=${c}';
     var res = await http.get(url);
     var out = res.body;
     setState(() {

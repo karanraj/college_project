@@ -1,7 +1,7 @@
 import 'dart:convert';
+import 'package:DockerApp/main.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-
 import 'package:http/http.dart' as http;
 
 class LaunchContainer extends StatefulWidget {
@@ -15,13 +15,13 @@ class _LaunchContainerState extends State<LaunchContainer> {
     // TODO: implement initState
     super.initState();
     imgs();
-    vol();
+    //vol();
     net();
   }
 
   var output, osn, im, st, ntn, l, load = false;
   List image,
-      volume,
+      //volume,
       network,
       driverNet,
       driverVol,
@@ -30,11 +30,11 @@ class _LaunchContainerState extends State<LaunchContainer> {
       z = [],
       N = [];
 
-  vol() async {
+  /*vol() async {
     setState(() {
       load = true;
     });
-    var url = 'http://172.20.10.8/cgi-bin/showVol.py';
+    var url = 'http://$ip/cgi-bin/showVol.py';
     var res, fo;
     try {
       res = await http.get(url);
@@ -49,17 +49,17 @@ class _LaunchContainerState extends State<LaunchContainer> {
       l = volume.length;
       load = false;
       var len = l != null ? l : 0;
-      for (var i = 0; i < l; i++) {
+      for (var i = 0; i < len; i++) {
         z.add('${volume[i]}:${driverVol[i]}');
       }
     });
-  }
+  }*/
 
   imgs() async {
     setState(() {
       load = true;
     });
-    var url = 'http://172.20.10.8/cgi-bin/showImage.py';
+    var url = 'http://$ip/cgi-bin/showImage.py';
     var res, fo;
     try {
       res = await http.get(url);
@@ -74,7 +74,7 @@ class _LaunchContainerState extends State<LaunchContainer> {
       l = image.length;
       load = false;
       var len = l != null ? l : 0;
-      for (var i = 0; i < l; i++) {
+      for (var i = 0; i < len; i++) {
         y.add('${image[i]}:${tag[i]}');
       }
     });
@@ -84,7 +84,7 @@ class _LaunchContainerState extends State<LaunchContainer> {
     setState(() {
       load = true;
     });
-    var url = 'http://172.20.10.8/cgi-bin/showNet.py';
+    var url = 'http://$ip/cgi-bin/showNet.py';
     var res, fo;
     try {
       res = await http.get(url);
@@ -100,7 +100,7 @@ class _LaunchContainerState extends State<LaunchContainer> {
         l = network.length;
         load = false;
         var len = l != null ? l : 0;
-        for (var i = 0; i < l; i++) {
+        for (var i = 0; i < len; i++) {
           N.add('${network[i]}:${driverNet[i]}');
         }
       },
@@ -109,9 +109,8 @@ class _LaunchContainerState extends State<LaunchContainer> {
 
   @override
   Widget build(BuildContext context) {
-    lnch(os, i, s, n) async {
-      var url =
-          'http://172.20.10.8/cgi-bin/launch.py?osn=${os}&im=${i}&st=${s}&ntn=${n}';
+    lnch(os, i, n) async {
+      var url = 'http://$ip/cgi-bin/launch.py?osn=${os}&im=${i}&ntn=${n}';
       var res, o, fo, foo;
       try {
         res = await http.get(url);
@@ -208,7 +207,7 @@ class _LaunchContainerState extends State<LaunchContainer> {
                   style: TextStyle(fontSize: 16),
                 ),
               ),
-              Center(
+              /*Center(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Container(
@@ -237,7 +236,7 @@ class _LaunchContainerState extends State<LaunchContainer> {
                     ),
                   ),
                 ),
-              ),
+              ),*/
               Container(
                 margin: EdgeInsets.all(5),
                 padding: EdgeInsets.only(left: 5),
@@ -287,7 +286,7 @@ class _LaunchContainerState extends State<LaunchContainer> {
                       child: Container(
                         child: RaisedButton(
                           onPressed: () {
-                            lnch(osn, im, st, ntn);
+                            lnch(osn, im, ntn);
                           },
                           color: Colors.lightBlue,
                           child: Text(

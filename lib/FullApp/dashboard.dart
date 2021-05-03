@@ -56,7 +56,7 @@ class _DashBoardState extends State<DashBoard>
         ],
       ),
       // TODO BottomBar
-      bottomNavigationBar: BottomBar(),
+      //bottomNavigationBar: BottomBar(),
       body: Container(
         color: Colors.black,
         // padding: EdgeInsets.all(3),

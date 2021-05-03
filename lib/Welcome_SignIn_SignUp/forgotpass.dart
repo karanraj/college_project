@@ -63,9 +63,9 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                   try {
                     await auth.sendPasswordResetEmail(email: email);
                     if (auth != email) {
-                      toast("wrong email");
-                    } else {
                       toast("Reset Link Send to ${email}");
+                    } else {
+                      toast("wrong email");
                       Navigator.pushNamed(context, 'signin');
                     }
                   } catch (e) {

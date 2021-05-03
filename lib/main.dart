@@ -29,7 +29,7 @@ toast(message) {
       fontSize: 16.0);
 }
 
-var ip = "172.20.10.8";
+var ip = "52.66.11.188";
 /* 
 
 
